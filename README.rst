@@ -8,8 +8,8 @@ hosting, forums, wikis or other applications that need to prettify source code.
 Installing
 ----------
 
-... works as usual, use ``pip install Pygments`` to get published versions,
-or ``pip install -e .`` to install from a checkout in editable mode.
+... works as usual, use ``pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' Pygments`` to get published versions,
+or ``pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' -e .`` to install from a checkout in editable mode.
 
 Documentation
 -------------

@@ -55,7 +55,7 @@ Version 2.18.0
 - Make background colors in the image formatter work with Pillow 10.0 (#2623)
 - Require Python 3.8. As a result, the ``importlib-metadata`` package
   is no longer needed for fast plugin discovery on Python 3.7.
-  The ``plugins`` extra (used as, e.g., ``pip install pygments[plugins]``)
+  The ``plugins`` extra (used as, e.g., ``pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' pygments[plugins]``)
   is kept for backwards compatibility but now has no effect. (#2601)
 - Require the ``url`` attribute for lexers inside Pygments, add
   it to many lexers (#2588)
@@ -413,7 +413,7 @@ Version 2.13.0
   3.8. Thus, in order to install Pygments with optimal plugin
   support even for old Python versions, you should do::
 
-     pip install pygments[plugins]
+     pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' pygments[plugins]
 
   Pygments still falls back on ``pkg_resources`` if neither
   ``importlib.metadata`` nor ``importlib_metadata`` is found, but it

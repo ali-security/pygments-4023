@@ -19,7 +19,7 @@ you didn't give an explicit formatter name).
    If you are on Windows, an extra tool may be needed for colored output to
    work in the terminal. You can make sure Pygments is installed with
    Windows console coloring support by installing Pygments with the ``windows-terminal``
-   extra (e.g., ``pip install pygments[windows-terminal]``).
+   extra (e.g., ``pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' pygments[windows-terminal]``).
 
 :program:`pygmentize` attempts to
 detect the maximum number of colors that the terminal supports. The difference

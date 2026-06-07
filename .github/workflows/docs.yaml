@@ -24,7 +24,7 @@ jobs:
     - name: Checkout Pygments
       uses: actions/checkout@v4
     - name: Install tox
-      run: pip install -r requirements.txt
+      run: pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
     - name: Sphinx build
       run: |
         tox -e web-doc -- dirhtml
