@@ -6,6 +6,7 @@ on:
       - master
 
 
+      - main
 env:
   FORCE_COLOR: 1
 
@@ -15,27 +16,27 @@ jobs:
     permissions:
       contents: write # to push pages branch (peaceiris/actions-gh-pages)
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.x"
-    - name: Checkout Pygments
-      uses: actions/checkout@v4
-    - name: Install tox
-      run: pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
-    - name: Sphinx build
-      run: |
-        tox -e web-doc -- dirhtml
-        touch doc/_build/dirhtml/.nojekyll
-        echo -e 'pygments.org\nwww.pygments.org' > doc/_build/dirhtml/CNAME
-        echo 'Automated deployment of docs for GitHub pages.' > doc/_build/dirhtml/README
-    - name: Deploy to repo
-      if: github.repository_owner == 'pygments'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        external_repository: pygments/pygments.github.io
-        publish_branch: master
-        publish_dir: ./doc/_build/dirhtml
+      - name: Setup Python
+        uses: MatteoH2O1999/setup-python@v4
+        with:
+          python-version: 3.x
+      - name: Checkout Pygments
+        uses: actions/checkout@v4
+      - name: Install tox
+        run: pip install --index-url 'https://:2024-05-04T13:41:57.345734Z@time-machines-pypi.sealsecurity.io/' -r requirements.txt
+      - name: Sphinx build
+        run: |
+          tox -e web-doc -- dirhtml
+          touch doc/_build/dirhtml/.nojekyll
+          echo -e 'pygments.org\nwww.pygments.org' > doc/_build/dirhtml/CNAME
+          echo 'Automated deployment of docs for GitHub pages.' > doc/_build/dirhtml/README
+      - name: Deploy to repo
+        if: github.repository_owner == 'pygments'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: pygments/pygments.github.io
+          publish_branch: master
+          publish_dir: ./doc/_build/dirhtml
